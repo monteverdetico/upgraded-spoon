@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_13_171131) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_13_192102) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,9 +30,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_171131) do
     t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "authors_id"
-    t.index ["authors_id"], name: "index_recipes_on_authors_id"
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_recipes_on_author_id"
+    t.index ["title", "author_id"], name: "index_recipes_on_title_and_author_id", unique: true
   end
 
-  add_foreign_key "recipes", "authors", column: "authors_id"
+  add_foreign_key "recipes", "authors"
 end
