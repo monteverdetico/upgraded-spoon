@@ -1,5 +1,13 @@
 <h1>Recipes</h1>
 
+<div>
+  <h2>Find Your Recipe:</h2>
+  <%= form_with(url: recipes_path, method: :get, remote: false) do |f| %>
+    <%= f.label :query, 'Enter the ingredients you have and we will find you recipes:' %>
+    <%= f.text_field :query, placeholder: 'chicken, cheese' %>
+    <%= f.submit 'Search', name: nil %>
+  <% end %>
+<div>
 <ul>
   <% @recipes.each do |recipe| %>
     <li>
@@ -8,4 +16,4 @@
   <% end %>
 </ul>
 
-<%== pagy_nav(@pagy) %>
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>
