@@ -1,0 +1,20 @@
+<h1><%= @recipe.title %></h1>
+
+<div>
+  <%= image_tag(@recipe.image_url) %>
+</div>
+<div>
+  <p>Cook Time: <span><%= @recipe.cook_time %></p>
+  <p>Prep Time: <span><%= @recipe.prep_time %></p>
+  <p>Ratings: <span><%= @recipe.ratings %></p>
+</div>
+<div>
+  <h3>Ingredients</h3>
+  <ul>
+    <% ingredients(@recipe).each do |ingredient| %>
+        <li>
+        <%= ingredient %>
+        </li>
+    <% end %>
+  </ul>
+</div>
