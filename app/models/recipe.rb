@@ -11,6 +11,8 @@ class Recipe < ApplicationRecord
 
   validates :title, presence: true, uniqueness: { scope: :author }
 
+  validates_with JsonArrayStringValidator
+
   belongs_to :author
 
   pg_search_scope :search,
@@ -18,6 +20,7 @@ class Recipe < ApplicationRecord
                   using: {
                     tsearch: {
                       any_word: true,
+                      dictionary: 'english',
                       tsvector_column: 'ingredients_tsv'
                     }
                   }
