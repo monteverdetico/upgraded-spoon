@@ -6,14 +6,6 @@ class AddTsvectorColumnstoRecipes < ActiveRecord::Migration[7.1]
                                                      stored: true
     add_index :recipes, :ingredients_tsv, using: 'gin'
 
-    # execute <<-SQL
-    #   CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE
-    #   ON recipes FOR EACH ROW EXECUTE PROCEDURE
-    #   tsvector_update_trigger(
-    #     ingredients_tsv, 'pg_catalog.english', ingredients
-    #   );
-    # SQL
-
     now = Time.current.to_formatted_s(:db)
     update("UPDATE recipes SET updated_at = '#{now}'")
   end
