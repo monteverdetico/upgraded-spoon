@@ -7,6 +7,7 @@
   <p>Cook Time: <span><%= @recipe.cook_time %></p>
   <p>Prep Time: <span><%= @recipe.prep_time %></p>
   <p>Ratings: <span><%= @recipe.ratings %></p>
+  <p>Author: <span><%= @recipe.author.name %></p>
 </div>
 <div>
   <h3>Ingredients</h3>
@@ -17,4 +18,7 @@
         </li>
     <% end %>
   </ul>
+</div>
+<div>
+  <%= back_link(request.referer) %>
 </div>

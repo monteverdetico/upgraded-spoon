@@ -1,18 +1,25 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Recipes", type: :request do
-  describe "GET /index" do
-    it "returns http success" do
-      get "/recipes/index"
+RSpec.describe 'Recipes', type: :request do
+  describe 'GET /index' do
+    before do
+      create(:recipe)
+    end
+
+    it 'returns http success' do
+      get '/recipes'
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /show" do
-    it "returns http success" do
-      get "/recipes/show"
+  describe 'GET /show' do
+    let(:recipe) { create(:recipe) }
+
+    it 'returns http success' do
+      get "/recipes/#{recipe.to_param}"
       expect(response).to have_http_status(:success)
     end
   end
-
 end

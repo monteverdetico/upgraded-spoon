@@ -6,14 +6,14 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.preload(:author).find(params[:id])
   end
 
   private
 
   def recipes
     if params[:query].blank?
-      Recipe.all
+      Recipe.all.order(ratings: :desc)
     else
       Recipe.search(params[:query])
     end

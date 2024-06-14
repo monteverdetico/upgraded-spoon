@@ -2,12 +2,13 @@
 
 FactoryBot.define do
   factory :recipe do
+    author
     title { 'MyString' }
     cook_time { 1 }
     prep_time { 1 }
-    ingredients { 'MyText' }
+    ingredients { '["1 egg"]' }
     ratings { 1 }
-    image_url { 'MyString' }
+    image_url { '/apple-touch-icon.png' }
     category { 'MyString' }
   end
 end

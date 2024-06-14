@@ -8,6 +8,16 @@
     <%= f.submit 'Search', name: nil %>
   <% end %>
 <div>
+
+<% if @recipes.empty? %>
+  <div>
+    <h3> No recipes were found with your ingredients, time to experiment (or browse all recipes below)!</h3>
+    <%= link_to 'All recipes', recipes_path %>
+  </div>
+<% else %>
+ <%= link_to 'Show All Recipes', recipes_path %>
+<% end %>
+
 <ul>
   <% @recipes.each do |recipe| %>
     <li>
