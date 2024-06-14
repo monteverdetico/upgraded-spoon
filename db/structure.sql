@@ -172,13 +172,6 @@ CREATE UNIQUE INDEX index_recipes_on_title_and_author_id ON public.recipes USING
 
 
 --
--- Name: recipes tsvectorupdate; Type: TRIGGER; Schema: public; Owner: -
---
-
-CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE ON public.recipes FOR EACH ROW EXECUTE FUNCTION tsvector_update_trigger('ingredients_tsv', 'pg_catalog.english', 'ingredients');
-
-
---
 -- Name: recipes fk_rails_08ee84afe6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 

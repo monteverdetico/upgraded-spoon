@@ -61,6 +61,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'dockerfile-rails', '>= 1.6'
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 
