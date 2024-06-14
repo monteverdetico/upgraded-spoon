@@ -13,5 +13,12 @@ class Recipe < ApplicationRecord
 
   belongs_to :author
 
-  pg_search_scope :search, against: :ingredients, using: { tsearch: { dictionary: 'english' } }
+  pg_search_scope :search,
+                  against: :ingredients,
+                  using: {
+                    tsearch: {
+                      any_word: true,
+                      tsvector_column: 'ingredients_tsv'
+                    }
+                  }
 end
